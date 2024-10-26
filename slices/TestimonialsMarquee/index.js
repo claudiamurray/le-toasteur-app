@@ -134,7 +134,7 @@ const ReviewCard = ({ img, name, username, body }) => {
  * @param { TestimonialsMarqueeProps }
  */
 const TestimonialsMarquee = ({ slice }) => (
-	<section className="my-20 mb-40">
+	<section className="my-20 mb-48">
 		<div className="mx-auto max-w-2xl text-center">
 			<h2 className="dark:text-white mt-6 text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:mt-8 lg:text-5xl">
 				{slice.primary.title}
