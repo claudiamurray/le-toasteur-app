@@ -24,7 +24,9 @@
     "no-unused-vars": "off",
     "no-dupe-keys": "off",
     "no-inner-declarations": "off",
-    "no-empty": "off"
+    "no-empty": "off",
+    "no-undef": "off",
+    "@next/next/no-img-element": "off"
   },
   "globals": {
     "setJobs": "readonly",
