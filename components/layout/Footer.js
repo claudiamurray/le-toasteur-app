@@ -85,7 +85,7 @@ function Footer({ alternateLanguages = [], ...props }) {
                     href={
                       alternateLanguages[0].lang == 'fr-fr'
                         ? '/en-ca/menu'
-                        : '/menu'
+                        : '/menu-mai-juin'
                     }
                   >
                     <a>Menu</a>
