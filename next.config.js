@@ -36,32 +36,39 @@ const nextConfig = async () => {
         'www.google.com',
         'lh3.googleusercontent.com'
       ]
-    }
+    },
 
-    // async redirects() {
-    //   return [
-    //     {
-    //       source: '/notre-histoire',
-    //       destination: '/en-ca/our-history',
-    //       permanent: true
-    //     },
-    //     {
-    //       source: '/menu',
-    //       destination: '/menu',
-    //       permanent: true
-    //     },
-    //     {
-    //       source: '/galerie',
-    //       destination: '/en-ca/gallery',
-    //       permanent: true
-    //     },
-    //     {
-    //       source: '/contact',
-    //       destination: '/en-ca/contact',
-    //       permanent: true
-    //     }
-    //   ];
-    // }
+    async redirects() {
+      return [
+        {
+          source: '/menu',
+          destination: '/menu-mai-juin',
+          permanent: true,
+          has: [
+            {
+              type: 'query',
+              key: 'lang',
+              value: 'fr'
+            }
+          ]
+        },
+        {
+          source: '/notre-histoire',
+          destination: '/en-ca/our-history',
+          permanent: true
+        },
+        {
+          source: '/galerie',
+          destination: '/en-ca/gallery',
+          permanent: true
+        },
+        {
+          source: '/contact',
+          destination: '/en-ca/contact',
+          permanent: true
+        }
+      ];
+    }
   };
 };
 

@@ -11,7 +11,7 @@
 .footer-grid {
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  column-gap: 4rem;
+  column-gap: 3rem;
   row-gap: 9.6rem;
   padding: 6rem 0rem;
 

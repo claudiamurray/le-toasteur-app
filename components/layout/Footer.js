@@ -1,21 +1,18 @@
-import classes from './Footer.module.css';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import blueTransparentLogo from '../../public/images/logos/logo-toasteur-villeray-navy-transparent.png';
-import facebook from '../../public/images/socials/square-facebook.svg';
-import instagram from '../../public/images/socials/square-instagram.svg';
+import classes from './Footer.module.css';
 
-import { Facebook, Instagram, Google } from '@mui/icons-material';
+import { Facebook, Google, Instagram } from '@mui/icons-material';
 
-import React from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
 import { resolveLocaleFromNext } from '../../lib/resolveLocaleFromNext';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
-import { useRouter } from 'next/router';
-import { PrismicLink, PrismicText } from '@prismicio/react';
 
 const FlagIcon = ({ lang }) => {
   const code = lang.substring(3).toLowerCase();
@@ -28,6 +25,8 @@ function Footer({ alternateLanguages = [], ...props }) {
 
   const router = useRouter();
   const currentRoute = router.pathname;
+  const isEnglish = router.locale === 'en-ca';
+
 
   return (
     <React.Fragment>
@@ -52,15 +51,31 @@ function Footer({ alternateLanguages = [], ...props }) {
               <span>(514) 759-6377</span>
             </div>
             <div className={classes['col-2--openings']}>
-              <span className={classes.subtitle}>Heures d’ouverture:</span>
+              <span className={classes.subtitle}>
+                {isEnglish ? 'Opening Hours:' : 'Heures d\'ouverture:'}
+              </span>
 
-              <p>Lundi | 8H00 - 15H00</p>
-              <p>Mardi | FERMÉ</p>
-              <p>Mercredi | 8H00 - 15H00</p>
-              <p>Jeudi | 8H00 - 15H00</p>
-              <p>Vendredi | 8H00 - 15H00</p>
-              <p>Samedi | 8H00 - 15H00</p>
-              <p>Dimanche | 8H00 - 15H00</p>
+              {isEnglish ? (
+                <>
+                  <p>Monday | 8:00 AM - 3:00 PM</p>
+                  <p>Tuesday | 8:00 AM - 3:00 PM</p>
+                  <p>Wednesday | 8:00 AM - 3:00 PM</p>
+                  <p>Thursday | 8:00 AM - 3:00 PM</p>
+                  <p>Friday | 8:00 AM - 3:00 PM</p>
+                  <p>Saturday | 8:00 AM - 3:00 PM</p>
+                  <p>Sunday | 8:00 AM - 3:00 PM</p>
+                </>
+              ) : (
+                <>
+                  <p>Lundi | 8H00 - 15H00</p>
+                  <p>Mardi | 8H00 - 15H00</p>
+                  <p>Mercredi | 8H00 - 15H00</p>
+                  <p>Jeudi | 8H00 - 15H00</p>
+                  <p>Vendredi | 8H00 - 15H00</p>
+                  <p>Samedi | 8H00 - 15H00</p>
+                  <p>Dimanche | 8H00 - 15H00</p>
+                </>
+              )}
             </div>
           </div>
           <div className={classes['footer-col--3']}>
