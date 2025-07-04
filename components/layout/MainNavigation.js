@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import classes from './MainNavigation.module.css';
-import Link from 'next/link';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
 import blueLogo from '../../public/images/logos/logo-toasteur-villeray-navy.png';
 import blueToast from '../../public/images/logos/toast-blue-navy-ellipsed.svg';
-import { useRouter } from 'next/router';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import classes from './MainNavigation.module.css';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 const FlagIcon = ({ lang }) => {
@@ -143,7 +143,7 @@ function MainNavigation({ alternateLanguages = [], ...props }) {
                     href={
                       alternateLanguages[0].lang == 'fr-fr'
                         ? '/en-ca/menu'
-                        : '/menu-mai-juin'
+                        : '/menu'
                     }
                   >
                     <a

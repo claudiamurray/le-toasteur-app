@@ -42,7 +42,7 @@ const nextConfig = async () => {
       return [
         {
           source: '/menu',
-          destination: '/menu-mai-juin',
+          destination: '/menu',
           permanent: true,
           has: [
             {
