@@ -1,8 +1,7 @@
 import { SliceZone } from '@prismicio/react';
-import * as prismicH from '@prismicio/helpers';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createClient } from '../prismicio';
+import { createClient, localeOverrides } from '../prismicio';
 import { components } from '../slices';
 import { resolveLocaleFromNext } from '../lib/resolveLocaleFromNext';
 import { withAlternateLanguageURLs } from '../lib/withAlternateLanguageURLs';
@@ -14,7 +13,7 @@ const Page = (props) => {
   const { metaTitle, metaDescription, ogImage, ogImageAlt, page } = props;
   // console.log('alternante through page:', page);
   // console.log(page.url);
-  const canonicalUrl = `https://letoasteur.com` + page.url;
+  const canonicalUrl = `https://letoasteur.com${page.url}`;
 
   return (
     <Layout alternateLanguages={page.alternate_languages}>
@@ -99,8 +98,16 @@ export async function getStaticPaths() {
 
   const documents = await client.getAllByType('page', { lang: '*' });
 
+  // Filter out documents without a uid (misconfigured pages in Prismic)
+  const validDocuments = documents.filter((doc) => doc.uid);
+
+  const paths = validDocuments.map((doc) => ({
+    params: { uid: doc.uid },
+    locale: localeOverrides[doc.lang] || doc.lang
+  }));
+
   return {
-    paths: documents.map((doc) => prismicH.asLink(doc)),
+    paths,
     fallback: false
   };
 }
