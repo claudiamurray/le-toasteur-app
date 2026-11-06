@@ -186,7 +186,7 @@ function Footer({ alternateLanguages = [], ...props }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href="https://share.google/aB08YWGitmSapsRkF">
                     <a>
                       <div className={classes['icon-svg']}>
                         <Google sx={{ fontSize: 30 }} />
